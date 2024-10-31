@@ -1,7 +1,6 @@
-'use client'
+'use client';
 
 import { useRouter } from 'next/navigation';
-import React from 'react'
 import { BiSearch } from 'react-icons/bi';
 import { HiHome } from 'react-icons/hi';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
@@ -13,46 +12,68 @@ interface HeaderProps {
   className?: string;
 }
 
-function Header({children, className}: HeaderProps) {
+const Header = ({ children, className }: HeaderProps) => {
   const router = useRouter();
 
   return (
-    <div className={twMerge(`h-fit bg-gradient-to-b `, className)}>
-      <div className='w-full mb-4 flex items-center justify-between'>
-        <div className='hidden m:flex gap-x-2 items-center'>
-          <button onClick={() => router.back} className='rounded-full bg-black flex items-center justify-center hover:opacity-70'>
-            <RxCaretLeft size={28} className='text-white' />
+    <div className={twMerge(`
+      h-20 bg-gradient-to-b from-slate-900 to-transparent 
+      backdrop-blur-sm border-b border-slate-800/40
+      px-4 py-6
+    `, className)}>
+      <div className="w-full h-full flex items-center justify-between">
+        {/* Navigation Buttons - Desktop */}
+        <div className="hidden md:flex gap-x-3 items-center">
+          <button 
+            onClick={() => router.back()}
+            className="rounded-xl bg-slate-800/50 p-2.5
+              hover:bg-slate-700/50 transition-colors duration-200
+              focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+          >
+            <RxCaretLeft size={24} className="text-slate-200" />
           </button>
-          <button onClick={() => router.forward} className='rounded-full bg-black flex items-center justify-center hover:opacity-70'>
-            <RxCaretRight size={28} className='text-white' />
+          <button 
+            onClick={() => router.forward()}
+            className="rounded-xl bg-slate-800/50 p-2.5
+              hover:bg-slate-700/50 transition-colors duration-200
+              focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+          >
+            <RxCaretRight size={24} className="text-slate-200" />
           </button>
-
         </div>
-        <div className='flex md:hidden gap-x-2 items-center'>
-          <button  className=''>
-            <HiHome />
-          </button>
-          <button  className=''>
-            <BiSearch />
-          </button>
 
+        {/* Mobile Navigation */}
+        <div className="flex md:hidden gap-x-2 items-center">
+          <button className="p-2 rounded-xl hover:bg-slate-800/50 transition-colors duration-200">
+            <HiHome className="text-slate-200" size={22} />
+          </button>
+          <button className="p-2 rounded-xl hover:bg-slate-800/50 transition-colors duration-200">
+            <BiSearch className="text-slate-200" size={22} />
+          </button>
         </div>
-        <div className='flex justify-between items-center gap-x-4'>
-          <>
-            <div>
-              <Button onClick={() => {}} className='bg-transparent text-neutral-300'>Sign up</Button>
-            </div>
-            <div>
-              <Button onClick={() => {}} className='bg-white text-neutral-300'>Login</Button>
-            </div>
-          </>
 
+        {/* Auth Buttons */}
+        <div className="flex items-center gap-x-2">
+          <Button 
+            onClick={() => {}} 
+            className="bg-transparent hover:bg-slate-800/50 text-slate-200 px-4 py-2.5 w-auto"
+          >
+            Sign up
+          </Button>
+          <Button 
+            onClick={() => {}} 
+            className="bg-indigo-500 hover:bg-indigo-400 text-white px-4 py-2.5 w-auto
+              shadow-lg shadow-indigo-500/20"
+          >
+            Log in
+          </Button>
         </div>
       </div>
-      {children}
-      
+      <div className="mt-10">
+        {children}
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default Header;

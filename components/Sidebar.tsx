@@ -89,7 +89,7 @@ export const Sidebar = ({ children }: SidebarProps) => {
   return (
     <div className="flex w-full h-screen bg-slate-950">
       <div 
-        className="hidden md:flex flex-col gap-y-2 h-full w-[300px] p-2 
+        className="hidden md:flex flex-col gap-y-2 h-full w-[250px] p-2 
         bg-gradient-to-b from-slate-900 to-slate-950"
       >
         <Box>
@@ -103,7 +103,7 @@ export const Sidebar = ({ children }: SidebarProps) => {
           <Library />
         </Box>
       </div>
-      <main className="h-full flex-1 overflow-y-auto py-2 px-4 bg-gradient-to-b from-slate-900/50 to-slate-950">
+      <main className="h-full flex-1 overflow-y-auto py-2 px-2 bg-gradient-to-b from-slate-900/50 to-slate-950">
         {children}
       </main>
     </div>
