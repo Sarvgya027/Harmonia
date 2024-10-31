@@ -1,7 +1,21 @@
+'use client'
+
 import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
+import { AuthContext } from "@/context/AuthContext";
+import { createClient } from "@/utils/supabase/client";
+import { log } from "console";
+import { useContext, useEffect } from "react";
 
 export default function Home() {
+  const { user, loading} = useContext(AuthContext);
+
+  console.log('line sjcbajkcaskc', user);
+  
+
+
+
+  
   return (
     <div className="bg-slate-950 min-h-full w-full overflow-hidden overflow-y-auto">
       <Header>

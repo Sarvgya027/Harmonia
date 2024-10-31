@@ -15,6 +15,12 @@ interface HeaderProps {
 const Header = ({ children, className }: HeaderProps) => {
   const router = useRouter();
 
+  const handleLogin = () => {
+    console.log('oeooeosoe');
+    
+    router.push('/login')
+  }
+
   return (
     <div className={twMerge(`
       h-20 bg-gradient-to-b from-slate-900 to-transparent 
@@ -61,7 +67,7 @@ const Header = ({ children, className }: HeaderProps) => {
             Sign up
           </Button>
           <Button 
-            onClick={() => {}} 
+            onClick={handleLogin} 
             className="bg-indigo-500 hover:bg-indigo-400 text-white px-4 py-2.5 w-auto
               shadow-lg shadow-indigo-500/20"
           >
